@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+
+.study-space {
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px black;
+  padding: 16px;
+  width: 260px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.study-space:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.study-list {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top:20px;
+  gap: 16px;
+}
