@@ -1,10 +1,20 @@
 import { useState } from "react";
 import Studylist from "./Studylist";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 const Home = () => {
 
     const [showSpaces, setShowSpaces] = useState(true);
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+        setShowSpaces(true)
+    } else {
+        setShowSpaces(false)
+    }
+    });
 
   const spaces = [
     {id: 1, name: "Library", description: "Quiet", available: true},
@@ -27,12 +37,13 @@ const Home = () => {
 				<a href='/signin'>
 					<button className="bg-blue-700 text-white rounded-xl py-2 px-4">Sign in</button>
 				</a>
+
+                <a href='/signout'>
+					<button className="bg-blue-700 text-white rounded-xl py-2 px-4">Sign out</button>
+				</a>
 			</div>
 
             <h1>StudyHere</h1>
-      <button onClick={() => setShowSpaces(!showSpaces)}>
-        {showSpaces ? "Hide Study Spaces" : "Show Study Spaces"}
-         </button>
 
         {showSpaces && <Studylist spaces={spaces} />}
 		</>
